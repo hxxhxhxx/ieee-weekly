@@ -1,6 +1,7 @@
 # ieee-weekly · IEEE 期刊 Early Access 周报
 
 [![ci](https://github.com/hxxhxhxx/ieee-weekly/actions/workflows/ci.yml/badge.svg)](https://github.com/hxxhxhxx/ieee-weekly/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/dsh-ieee-weekly.svg)](https://www.npmjs.com/package/dsh-ieee-weekly)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Weekly digest for IEEE Xplore journal Early Access: Crossref discovery → LLM per-paper screening → Markdown → email.
@@ -26,6 +27,17 @@ Crossref（DOI 收录时间，精确到"最近 N 天"）
 ```
 
 ## 快速开始（3 步）
+
+已发布到 npm，也可以直接装：
+
+```bash
+npm i -g dsh-ieee-weekly    # 得到 ieee-weekly 命令
+ieee-weekly --dry-run       # 先干跑
+```
+
+DSH 里则是在「插件 → 市场」搜 `dsh-ieee-weekly` 安装；装好后直接对 agent 说「跑一下 IEEE 周报」即可。
+
+从源码跑：
 
 ```powershell
 cd D:\Deepseek_workplace\ieee-weekly

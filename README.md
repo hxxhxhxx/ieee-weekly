@@ -1,5 +1,8 @@
 # ieee-weekly · IEEE 期刊 Early Access 周报
 
+[![ci](https://github.com/hxxhxhxx/ieee-weekly/actions/workflows/ci.yml/badge.svg)](https://github.com/hxxhxhxx/ieee-weekly/actions/workflows/ci.yml)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Weekly digest for IEEE Xplore journal Early Access: Crossref discovery → LLM per-paper screening → Markdown → email.
 Tuned for compound-semiconductor (GaAs / GaN / InP) power-amplifier research; keywords, journals and thresholds live in one `config.json`.
 

@@ -1,21 +1,24 @@
 # 发布到 GitHub / Gitee、以及 npm
 
-本地仓库已经初始化并提交（`main` 分支）。剩下的是"建远端 + 推送 + 发 npm"。
+**当前状态（2026-10-29）**：GitHub 仓库已建好并推送完成 → <https://github.com/hxxhxhxx/ieee-weekly>
 
-## 1. GitHub
+- 本机走 Clash Verge 的 `127.0.0.1:7897` 代理访问 GitHub（`git config --global http.https://github.com.proxy`）
+- 推送用 SSH：密钥 `~/.ssh/id_ed25519_github`，已加到账号（key 名 `SCUT-Windows ieee-weekly`），`core.sshCommand` 指向 Windows OpenSSH
+- 后续只需 `git push`
 
-本机当前**连不上 github.com**（TCP 443 能连、TLS 被中断，`git ls-remote` 超时），所以推送前需要代理/VPN：
+## 1. GitHub（已完成）
 
 ```bash
-git config --global http.proxy http://127.0.0.1:7890   # 换成你自己的代理端口
-# 或只用 SSH：ssh -T git@github.com 能通即可
+git remote -v          # origin git@github.com:hxxhxhxx/ieee-weekly.git
+git push               # 之后每次改完直接推
 ```
 
-然后用 GitHub CLI 或网页建仓：
+首次换机器时的准备：
 
 ```bash
-git remote add origin https://github.com/<你的账号>/ieee-weekly.git
-git push -u origin main
+git config --global http.https://github.com.proxy http://127.0.0.1:7897  # 有代理才需要
+git config --global core.sshCommand "C:/Windows/System32/OpenSSH/ssh.exe" # Windows + MinGit
+ssh-keygen -t ed25519 -C "you@example.com"                                # 然后把 .pub 加到 GitHub
 ```
 
 ## 2. Gitee（本机可直连，作为镜像）

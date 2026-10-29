@@ -6,10 +6,20 @@
   "private": false,
   "license": "MIT",
   "author": "mihexin",
-  "keywords": ["ieee", "ieeexplore", "early-access", "literature-review", "digest", "llm", "power-amplifier", "gan", "gaas"],
+  "keywords": [
+    "ieee",
+    "ieeexplore",
+    "early-access",
+    "literature-review",
+    "digest",
+    "llm",
+    "power-amplifier",
+    "gan",
+    "gaas"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/<your-account>/ieee-weekly.git"
+    "url": "https://github.com/hxxhxhxx/ieee-weekly.git"
   },
   "bin": {
     "ieee-weekly": "./src/cli.mjs"
@@ -26,5 +36,9 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "homepage": "https://github.com/hxxhxhxx/ieee-weekly#readme",
+  "bugs": {
+    "url": "https://github.com/hxxhxhxx/ieee-weekly/issues"
   }
 }

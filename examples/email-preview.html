@@ -1,0 +1,76 @@
+<!doctype html><html><body style="margin:0;background:#f5f6f8;font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',sans-serif">
+  <div style="max-width:760px;margin:0 auto;background:#fff;padding:28px 30px">
+    <div style="font-size:13px;color:#888;letter-spacing:.5px">IEEE WEEKLY DIGEST</div>
+    <h1 style="margin:6px 0 4px;font-size:22px;color:#111">IEEE 期刊周报 · 2026-10-29</h1>
+    <div style="font-size:12px;color:#666;line-height:1.7">
+      窗口 2026-10-23 → 2026-10-29（近 7 天）<br>
+      覆盖期刊 10 种 · 抓取 57 篇（Early Access 14）· 研判 14 篇 · 推荐 <b>3</b> 篇<br>
+      研判引擎：大模型逐篇研判（deepseek-chat）
+    </div>
+    <div style="margin-top:14px;padding:12px 14px;background:#f3f7fd;border-left:3px solid #0b64c8;font-size:13px;line-height:1.8;color:#22333f"><b>本期导读</b><br>本周三篇 TMTT 论文聚焦线性化与输出网络设计：双输入神经网络 DPD 应对 MIMO 阵列负载调制，知识蒸馏多模型残差网络实现低复杂度配置自适应，均面向 GaN PA 阵列；Doherty 输出网络解析综合则为 GaN DPA 提供低维优化工程方法。</div>
+    <hr style="border:none;border-top:1px solid #e5e5e5;margin:18px 0">
+
+    <h2 style="font-size:16px;color:#111;margin:18px 0 6px">一、本周必读（2）</h2>
+    
+    <div style="padding:16px 0;border-bottom:1px solid #e8e8e8">
+      <div style="font-size:15px;font-weight:600;line-height:1.45;color:#111">Linearizing Digital MIMO Arrays Under Load Modulation: Dual-Input Neural Network Approaches</div>
+      <div style="margin-top:6px;font-size:12px;color:#777">
+        TMTT ｜ Early Access ｜ 2026-10-27
+         ｜ 评分 85
+      </div>
+      <div style="margin-top:8px;font-size:13px;color:#0b64c8"><b>结论：</b>MIMO阵列负载调制下的双输入NN DPD，GaN PA阵列线性化可直接借鉴</div>
+      <div style="margin-top:6px;font-size:13px;color:#333;line-height:1.7"><b>做了什么：</b>针对MIMO发射机中天线耦合引起PA负载调制、使传统DPD失效的问题，提出嵌入负载信息的双输入神经网络行为模型与DPD结构，在数字MIMO阵列上验证线性化效果。</div>
+      <div style="margin-top:4px;font-size:13px;color:#333;line-height:1.7"><b>方法：</b>双输入神经网络行为模型/DPD，输入含负载调制相关信息；工艺与测试平台摘要未说明。</div>
+      <div style="margin-top:4px;font-size:13px;color:#333;line-height:1.7"><b>结果：</b>摘要未给出ACPR、EVM等具体指标。</div>
+      <div style="margin-top:4px;font-size:13px;color:#333;line-height:1.7"><b>可借鉴：</b>做GaN Doherty/LMBA阵列时，可借鉴把负载阻抗信息作为第二输入训练DPD，缓解耦合导致的非线性漂移。</div>
+      
+      
+      <div style="margin-top:8px;font-size:12px">
+        <a href="https://doi.org/10.1109/tmtt.2026.3739851" style="color:#0b64c8;text-decoration:none">DOI</a>
+        &nbsp;·&nbsp;<a href="https://ieeexplore.ieee.org/document/11755558" style="color:#0b64c8;text-decoration:none">IEEE Xplore</a>
+      </div>
+    </div>
+    <div style="padding:16px 0;border-bottom:1px solid #e8e8e8">
+      <div style="font-size:15px;font-weight:600;line-height:1.45;color:#111">An Analytics-Driven Output Network Synthesis Method for Doherty Power Amplifiers</div>
+      <div style="margin-top:6px;font-size:12px;color:#777">
+        TMTT ｜ Early Access ｜ 2026-10-27
+         ｜ 评分 85
+      </div>
+      <div style="margin-top:8px;font-size:13px;color:#0b64c8"><b>结论：</b>Doherty输出网络解析综合，GaN DPA设计可直接用的工程方法</div>
+      <div style="margin-top:6px;font-size:13px;color:#333;line-height:1.7"><b>做了什么：</b>针对Doherty PA输出网络设计依赖经验、优化维度高的问题，基于严格电路模型提出解析综合方法，由少量设计参数经低维数值优化确定网络元件值，改善负载调制期效率。</div>
+      <div style="margin-top:4px;font-size:13px;color:#333;line-height:1.7"><b>方法：</b>基于电路模型的输出网络解析综合+低维数值优化；工艺与实测细节摘要未说明。</div>
+      <div style="margin-top:4px;font-size:13px;color:#333;line-height:1.7"><b>结果：</b>摘要称简化设计流程并提升负载调制效率，未给出具体PAE/带宽数字。</div>
+      <div style="margin-top:4px;font-size:13px;color:#333;line-height:1.7"><b>可借鉴：</b>可直接用于GaN Doherty合路/阻抗变换网络快速综合，减少反复EM迭代，适合宽带DPA起步设计。</div>
+      
+      
+      <div style="margin-top:8px;font-size:12px">
+        <a href="https://doi.org/10.1109/tmtt.2026.3745534" style="color:#0b64c8;text-decoration:none">DOI</a>
+        &nbsp;·&nbsp;<a href="https://ieeexplore.ieee.org/document/11755562" style="color:#0b64c8;text-decoration:none">IEEE Xplore</a>
+      </div>
+    </div>
+
+    <h2 style="font-size:16px;color:#111;margin:24px 0 6px">二、值得一看（1）</h2>
+    <ul style="padding-left:18px;margin:0"><li style="margin:6px 0;font-size:13px;color:#222">
+      <b>Knowledge-Distillation-Aided Multimodel Residual Neural Network for Low-Complexity Configuration Adaptive Digital Predistortion</b><br><span style="color:#777;font-size:12px">TMTT · Early Access · 2026-10-23</span>
+      <br><span style="color:#444">知识蒸馏多模型残差NN的DPD，低复杂度自适应，方法可迁移GaN PA</span>
+       <a href="https://doi.org/10.1109/tmtt.2026.3742117" style="color:#0b64c8;text-decoration:none">DOI</a>
+    </li></ul>
+
+    <h2 style="font-size:16px;color:#111;margin:24px 0 6px">三、存档（1）</h2>
+    <ul style="padding-left:18px;margin:0"><li style="margin:6px 0;font-size:13px;color:#222">
+      <b>Physics-Informed Neural Network-Based Model for GaN HEMTs With Temperature Dependence</b><br><span style="color:#777;font-size:12px">TMTT · Early Access · 2026-10-27</span>
+      <br><span style="color:#444">GaN HEMT温度相关PINN器件模型，对PA大信号建模有间接价值</span>
+       <a href="https://doi.org/10.1109/tmtt.2026.3741497" style="color:#0b64c8;text-decoration:none">DOI</a>
+    </li></ul>
+
+    <div style="margin-top:26px;padding:16px 18px;background:#fafafa;border:1px solid #eee;font-size:12px;color:#555;line-height:1.8">
+      <b style="color:#111">关于这份周报</b><br>
+      <b>做了什么：</b>每周自动检查这些 IEEE 期刊过去 7 天新注册的 DOI（含 Early Access），逐篇读摘要、按"化合物工艺功率放大器"方向打分，只把值得看的挑出来。<br>
+      <b>有什么用：</b>把"挨个期刊翻目录、读几十条标题摘要"压缩成 3 分钟；Early Access 通常比正式见刊早 3-6 个月。<br>
+      <b>边界：</b>只读标题/摘要/元数据，不下载全文；评分只作筛选辅助，取舍仍看原文。<br>
+      修改关键词 / 期刊 / 收件人：编辑 <code>config.json</code> 后重跑。
+    </div>
+    <div style="margin-top:14px;font-size:11px;color:#999;line-height:1.7">
+      自动生成 · 完整 Markdown 见附件
+    </div>
+  </div></body></html>

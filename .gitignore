@@ -1,0 +1,7 @@
+node_modules/
+logs/
+reports/
+state/
+config.json
+.env
+*.local.json

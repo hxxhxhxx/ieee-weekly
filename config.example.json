@@ -1,0 +1,369 @@
+{
+  "$comment": "关键词/期刊/评分/邮件直接改这里。core=true 表示 PA 核心词；process 控制化合物工艺优先、硅基降权。",
+  "windowDays": 7,
+  "timezone": "Asia/Shanghai",
+  "keywords": [
+    {
+      "term": "power amplifier",
+      "weight": 5,
+      "core": true,
+      "aliases": [
+        "power amplifiers",
+        "power amp",
+        "PA design",
+        "PA MMIC"
+      ]
+    },
+    {
+      "term": "Doherty",
+      "weight": 5,
+      "core": true,
+      "aliases": [
+        "Doherty amplifier",
+        "Doherty PA"
+      ]
+    },
+    {
+      "term": "LMBA",
+      "weight": 5,
+      "core": true,
+      "aliases": [
+        "load modulated balanced amplifier",
+        "load-modulated balanced amplifier"
+      ]
+    },
+    {
+      "term": "load modulation",
+      "weight": 4,
+      "core": true,
+      "aliases": [
+        "load-modulated",
+        "active load modulation"
+      ]
+    },
+    {
+      "term": "digital predistortion",
+      "weight": 4,
+      "core": true,
+      "aliases": [
+        "DPD",
+        "predistortion",
+        "predistorter"
+      ]
+    },
+    {
+      "term": "envelope tracking",
+      "weight": 4,
+      "core": true,
+      "aliases": [
+        "ET PA",
+        "envelope-tracking",
+        "supply modulation"
+      ]
+    },
+    {
+      "term": "outphasing",
+      "weight": 4,
+      "core": true,
+      "aliases": [
+        "Chireix",
+        "LINC"
+      ]
+    },
+    {
+      "term": "power added efficiency",
+      "weight": 3,
+      "core": true,
+      "aliases": [
+        "PAE",
+        "drain efficiency",
+        "efficiency of the PA"
+      ]
+    },
+    {
+      "term": "linearity",
+      "weight": 3,
+      "core": true,
+      "aliases": [
+        "linearization",
+        "AM-PM",
+        "AM/PM",
+        "ACLR",
+        "IMD3"
+      ]
+    },
+    {
+      "term": "harmonic tuning",
+      "weight": 2,
+      "core": true,
+      "aliases": [
+        "class-F",
+        "class-J",
+        "waveform engineering",
+        "harmonic termination"
+      ]
+    },
+    {
+      "term": "GaN",
+      "weight": 5,
+      "core": false,
+      "aliases": [
+        "gallium nitride",
+        "GaN HEMT",
+        "AlGaN/GaN",
+        "GaN-on-SiC"
+      ]
+    },
+    {
+      "term": "GaAs",
+      "weight": 4,
+      "core": false,
+      "aliases": [
+        "gallium arsenide",
+        "GaAs HBT",
+        "GaAs pHEMT"
+      ]
+    },
+    {
+      "term": "InP",
+      "weight": 3,
+      "core": false,
+      "aliases": [
+        "indium phosphide",
+        "InP HBT",
+        "InP DHBT"
+      ]
+    },
+    {
+      "term": "MMIC",
+      "weight": 3,
+      "core": false,
+      "aliases": [
+        "monolithic microwave integrated circuit"
+      ]
+    },
+    {
+      "term": "millimeter-wave",
+      "weight": 3,
+      "core": false,
+      "aliases": [
+        "mm-wave",
+        "mmWave",
+        "millimeter wave",
+        "sub-THz"
+      ]
+    },
+    {
+      "term": "high efficiency",
+      "weight": 3,
+      "core": false,
+      "aliases": [
+        "high-efficiency",
+        "efficiency enhancement"
+      ]
+    },
+    {
+      "term": "broadband",
+      "weight": 2,
+      "core": false,
+      "aliases": [
+        "wideband",
+        "multi-octave",
+        "ultra-wideband"
+      ]
+    },
+    {
+      "term": "beamforming",
+      "weight": 2,
+      "core": false,
+      "aliases": [
+        "phased array",
+        "beam forming",
+        "array transmitter"
+      ]
+    },
+    {
+      "term": "transmitter",
+      "weight": 2,
+      "core": false,
+      "aliases": [
+        "transmitters",
+        "TX front end",
+        "RF front end"
+      ]
+    }
+  ],
+  "negativeKeywords": [
+    "erratum",
+    "correction",
+    "editorial",
+    "call for papers",
+    "table of contents",
+    "front cover",
+    "in memoriam",
+    "guest editorial",
+    "comments on"
+  ],
+  "penaltyKeywords": [
+    "implant",
+    "biomedical",
+    "power converter",
+    "dc-dc",
+    "dc–dc",
+    "inverter",
+    "sram",
+    "memory macro",
+    "level shifter",
+    "energy harvesting",
+    "rectifier",
+    "on-chip regulator"
+  ],
+  "journals": [
+    {
+      "name": "IEEE Journal of Solid-State Circuits",
+      "issn": "0018-9200",
+      "tier": 1,
+      "enabled": true
+    },
+    {
+      "name": "IEEE Transactions on Microwave Theory and Techniques",
+      "issn": "0018-9480",
+      "tier": 1,
+      "enabled": true
+    },
+    {
+      "name": "IEEE Transactions on Circuits and Systems I: Regular Papers",
+      "issn": "1549-8328",
+      "tier": 1,
+      "enabled": true
+    },
+    {
+      "name": "IEEE Transactions on Circuits and Systems II: Express Briefs",
+      "issn": "1549-7747",
+      "tier": 2,
+      "enabled": true
+    },
+    {
+      "name": "IEEE Microwave and Wireless Technology Letters",
+      "issn": "2771-957X",
+      "tier": 2,
+      "enabled": true
+    },
+    {
+      "name": "IEEE Solid-State Circuits Letters",
+      "issn": "2573-9603",
+      "tier": 2,
+      "enabled": true
+    },
+    {
+      "name": "IEEE Microwave Magazine",
+      "issn": "1527-3342",
+      "tier": 2,
+      "enabled": true
+    },
+    {
+      "name": "IEEE Journal of Microwaves",
+      "issn": "2692-8388",
+      "tier": 2,
+      "enabled": true
+    },
+    {
+      "name": "IEEE Transactions on Electron Devices",
+      "issn": "0018-9383",
+      "tier": 1,
+      "enabled": true
+    },
+    {
+      "name": "IEEE Electron Device Letters",
+      "issn": "0741-3106",
+      "tier": 2,
+      "enabled": true
+    },
+    {
+      "name": "IEEE Microwave and Wireless Components Letters",
+      "issn": "1558-1764",
+      "tier": 2,
+      "enabled": false
+    },
+    {
+      "name": "Proceedings of the IEEE",
+      "issn": "0018-9219",
+      "tier": 1,
+      "enabled": false
+    }
+  ],
+  "discovery": {
+    "keywordSweepPages": 0
+  },
+  "scoring": {
+    "weights": {
+      "relevance": 0.55,
+      "novelty": 0.2,
+      "evidence": 0.15,
+      "tier": 0.1
+    },
+    "relevanceDivisor": 22,
+    "subKeywordFactor": 0.5,
+    "offDomainCap": 0.25,
+    "minScore": 50,
+    "mustReadScore": 80,
+    "worthScore": 65,
+    "reviewPenalty": 0.55
+  },
+  "report": {
+    "mustReadMax": 6,
+    "worthMax": 10,
+    "keepMax": 20,
+    "language": "zh"
+  },
+  "llm": {
+    "enabled": true,
+    "baseUrl": "https://api.deepseek.com",
+    "model": "deepseek-chat",
+    "apiKeyEnv": "DEEPSEEK_API_KEY",
+    "apiKey": "",
+    "batchSize": 6,
+    "maxItems": 80,
+    "temperature": 0.2,
+    "timeoutMs": 120000
+  },
+  "email": {
+    "enabled": true,
+    "host": "smtp.example.com",
+    "port": 465,
+    "secure": true,
+    "user": "",
+    "pass": "",
+    "from": "",
+    "to": [],
+    "subjectPrefix": "[IEEE 周报]"
+  },
+  "ieee": {
+    "delayMs": 450,
+    "maxRetries": 3,
+    "rowsPerPage": 25
+  },
+  "process": {
+    "compound": [
+      "GaN",
+      "GaAs",
+      "InP",
+      "Ga2O3",
+      "AlGaN",
+      "SiC",
+      "HEMT",
+      "HBT",
+      "pHEMT",
+      "mHEMT",
+      "compound semiconductor"
+    ],
+    "silicon": [
+      "CMOS",
+      "SOI",
+      "FinFET",
+      "silicon"
+    ],
+    "siliconPenalty": 0.8,
+    "neutralPenalty": 0.95
+  }
+}

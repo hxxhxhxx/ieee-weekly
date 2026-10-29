@@ -9,7 +9,7 @@ Tuned for compound-semiconductor (GaAs / GaN / InP) power-amplifier research; ke
 
 按你设定的**关键词**盯住 **IEEE Xplore 期刊新收录/Early Access**，**逐篇研判**，生成 **Markdown 周报**并**发到邮箱**。
 
-![邮件预览](docs/preview.png)
+![邮件预览](https://cdn.jsdelivr.net/gh/hxxhxhxx/ieee-weekly@main/docs/preview.png)
 
 ## 它解决什么问题
 

@@ -62,13 +62,25 @@ function merge(base, override) {
 }
 
 export async function loadConfig(file = path.join(ROOT, 'config.json')) {
-  const raw = JSON.parse(await readFile(file, 'utf8'));
+  const raw = await readConfigFile(file);
   const cfg = merge(DEFAULTS, expandEnv(raw));
   cfg.llm.apiKey = cfg.llm.apiKey || process.env[cfg.llm.apiKeyEnv] || '';
   cfg.email.pass = cfg.email.pass || process.env.IEEE_WEEKLY_SMTP_PASS || '';
   cfg.email.user = cfg.email.user || process.env.IEEE_WEEKLY_SMTP_USER || '';
   cfg.email.from = cfg.email.from || cfg.email.user;
   return cfg;
+}
+
+/** 没有 config.json（刚 clone、CI 环境）时回落到 config.example.json。 */
+async function readConfigFile(file) {
+  try {
+    return JSON.parse(await readFile(file, 'utf8'));
+  } catch (err) {
+    if (err.code !== 'ENOENT') throw err;
+    const fallback = path.join(ROOT, 'config.example.json');
+    console.warn(`! 没找到 ${path.basename(file)}，改用 ${path.basename(fallback)}（复制一份填好邮箱即可）`);
+    return JSON.parse(await readFile(fallback, 'utf8'));
+  }
 }
 
 export function activeJournals(cfg) {

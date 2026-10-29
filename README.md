@@ -7,6 +7,13 @@ Tuned for compound-semiconductor (GaAs / GaN / InP) power-amplifier research; ke
 
 ![邮件预览](docs/preview.png)
 
+## 它解决什么问题
+
+- **省掉"翻目录"这一步**：每周 10 本期刊的新文章（含 Early Access）自动汇总，不用挨个点开 TOC 看标题。
+- **提前 3-6 个月看到同行进展**：Early Access 比正式见刊早，新架构、新工艺、实测数据都能先看到。
+- **只留下与你方向相关的**：按 GaN/GaAs/InP 功率放大器打分，CMOS 降权、电力电子器件剔除，57 篇里通常只剩 3-5 篇值得读。
+- **可追溯**：每篇都带 DOI / Xplore 链接、上线日期、关键指标，看到感兴趣的直接跳原文。
+
 ```
 Crossref（DOI 收录时间，精确到"最近 N 天"）
    → IEEE Xplore（摘要 / Early Access 标记 / 作者 / 链接）

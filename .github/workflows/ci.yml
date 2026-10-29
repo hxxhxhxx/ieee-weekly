@@ -1,0 +1,20 @@
+name: check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Syntax check
+        run: for f in src/*.mjs tools/*.mjs; do node --check "$f"; done
+      - name: Install deps
+        run: npm ci --omit=dev
+      - name: Smoke test (config loads, CLI prints help path)
+        run: node -e "import('./src/config.mjs').then(async m => { const c = await m.loadConfig(); if (!c.keywords.length) throw new Error('no keywords'); console.log('config ok, journals:', m.activeJournals(c).length); })"

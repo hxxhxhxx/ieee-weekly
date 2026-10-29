@@ -122,7 +122,19 @@ gh repo create ieee-weekly --public --source=. --push
 - 市场会对每个包做**兼容性校验**（缓存里有 `version` / `enginesDsh` / `peerDependencies` 这几个字段），所以 peer 版本范围要跟着 DSH 主版本走。
 - 也就是说：GitHub 放源码 + npm publish 公开包 → 市场能发现并安装。
 
-**还差的一层**：当前是"CLI + Windows 计划任务"，不是 DSH 进程内的插件。要变成商城插件，需要再包一个 host 入口（`export function plugin`，注册一个 `ieee_weekly` 工具/命令去调这套 pipeline，配置走 `ctx.settings`），并在本地 profile 里安装验证一次。这一步我可以接着做——需要对着 `@deepseek-ai/dsh-tools` 的 SDK 类型开发，且装进 profile 后要重启 DSH 验证。
+**已经做成插件了**：同一个包既是 CLI，也是 DSH 插件（`dsh` 字段 + `cordis.patch.yml` + `index.js`），注册一个模型可调用的 `ieee_weekly` 工具。
+
+```
+dsh-ieee-weekly@0.1.0
+├── index.js             host 入口：export name/inject/apply，注册 ieee_weekly 工具
+├── cordis.patch.yml     loader 插入点
+└── src/                 与 CLI 共用同一套流水线
+```
+
+- **工具参数**：`days`、`dryRun`、`noEmail`、`ignoreSeen`、`limit`
+- **数据目录**：默认 `~/.ieee-weekly/`（config.json / state / reports），不写 `node_modules`；首次调用会把 `config.example.json` 播种成 `~/.ieee-weekly/config.json`
+- **自检**：`npm run plugin:check`，加 `--run` 会真跑一次 2 天窗口的 dry-run
+- **安装**：发布后在 DSH「插件市场」搜 `dsh-ieee-weekly`；本地也可以在 profile 里按 `file:` 依赖装入后重启 DSH
 
 ## 常见问题
 

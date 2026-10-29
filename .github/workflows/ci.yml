@@ -18,3 +18,5 @@ jobs:
         run: npm ci --omit=dev
       - name: Smoke test (config loads, CLI prints help path)
         run: node -e "import('./src/config.mjs').then(async m => { const c = await m.loadConfig(); if (!c.keywords.length) throw new Error('no keywords'); console.log('config ok, journals:', m.activeJournals(c).length); })"
+      - name: Plugin self-check
+        run: node tools/plugin-check.mjs

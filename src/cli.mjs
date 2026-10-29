@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { loadConfig, ROOT, activeJournals } from './config.mjs';
+import { loadConfig, PATHS, activeJournals } from './config.mjs';
 import { createIeeeClient } from './ieee.mjs';
 import { discover, isSeen, isNegative, matchJournal } from './discover.mjs';
 import { heuristicScore, llmScore, llmDigest, VERDICT_LABEL } from './screen.mjs';
@@ -144,7 +144,7 @@ async function main() {
   const markdown = buildMarkdown({ items: evaluated, meta });
   const html = buildHtml({ items: evaluated, meta });
   const filename = `ieee-weekly-${until}.md`;
-  const outDir = path.join(ROOT, 'reports');
+  const outDir = PATHS.reports;
   await mkdir(outDir, { recursive: true });
   const outFile = path.join(outDir, filename);
   await writeFile(outFile, markdown, 'utf8');

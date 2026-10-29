@@ -1,8 +1,36 @@
-import { readFile } from 'node:fs/promises';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+
+/**
+ * 数据目录：配置、state、reports 放这里。
+ * 优先 IEEE_WEEKLY_HOME；本地开发（仓库里有 config.json）用仓库目录；
+ * 作为 DSH 插件装进 node_modules 时回落到 ~/.ieee-weekly。
+ */
+export function resolveDataDir() {
+  if (process.env.IEEE_WEEKLY_HOME) return path.resolve(process.env.IEEE_WEEKLY_HOME);
+  if (existsSync(path.join(ROOT, 'config.json'))) return ROOT;
+  return path.join(os.homedir(), '.ieee-weekly');
+}
+
+export const PATHS = {
+  get home() {
+    return resolveDataDir();
+  },
+  get reports() {
+    return path.join(resolveDataDir(), 'reports');
+  },
+  get state() {
+    return path.join(resolveDataDir(), 'state');
+  },
+  get config() {
+    return path.join(resolveDataDir(), 'config.json');
+  },
+};
 
 const DEFAULTS = {
   windowDays: 7,
@@ -61,7 +89,7 @@ function merge(base, override) {
   return override;
 }
 
-export async function loadConfig(file = path.join(ROOT, 'config.json')) {
+export async function loadConfig(file = PATHS.config) {
   const raw = await readConfigFile(file);
   const cfg = merge(DEFAULTS, expandEnv(raw));
   cfg.llm.apiKey = cfg.llm.apiKey || process.env[cfg.llm.apiKeyEnv] || '';
@@ -71,16 +99,31 @@ export async function loadConfig(file = path.join(ROOT, 'config.json')) {
   return cfg;
 }
 
-/** 没有 config.json（刚 clone、CI 环境）时回落到 config.example.json。 */
+/** 依次尝试：指定文件 → 数据目录 config.json → 仓库内 config.example.json（并播种到数据目录）。 */
 async function readConfigFile(file) {
-  try {
-    return JSON.parse(await readFile(file, 'utf8'));
-  } catch (err) {
-    if (err.code !== 'ENOENT') throw err;
-    const fallback = path.join(ROOT, 'config.example.json');
-    console.warn(`! 没找到 ${path.basename(file)}，改用 ${path.basename(fallback)}（复制一份填好邮箱即可）`);
-    return JSON.parse(await readFile(fallback, 'utf8'));
+  const candidates = [file, PATHS.config, path.join(ROOT, 'config.example.json')];
+  let lastErr;
+  for (const [i, candidate] of candidates.entries()) {
+    try {
+      const raw = JSON.parse(await readFile(candidate, 'utf8'));
+      const isExample = candidate.endsWith('config.example.json');
+      if (isExample && i > 0) {
+        // 首次以插件/全局安装方式运行：把示例配置播种到数据目录，之后改这里。
+        try {
+          await mkdir(PATHS.home, { recursive: true });
+          await writeFile(PATHS.config, `${JSON.stringify(raw, null, 2)}\n`, 'utf8');
+          console.warn(`! 已生成 ${PATHS.config}，填好邮箱与 API Key 后即可收周报`);
+        } catch {
+          /* 数据目录不可写时继续用示例运行 */
+        }
+      }
+      return raw;
+    } catch (err) {
+      if (err.code !== 'ENOENT') throw err;
+      lastErr = err;
+    }
   }
+  throw new Error(`找不到配置文件：${file} / ${PATHS.config}；可复制 config.example.json 到 ${PATHS.config}。${lastErr ? ` (${lastErr.code})` : ''}`);
 }
 
 export function activeJournals(cfg) {

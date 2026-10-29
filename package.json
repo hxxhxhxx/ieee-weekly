@@ -56,7 +56,8 @@
     "test-mail": "node src/cli.mjs --test-mail",
     "setup": "powershell -ExecutionPolicy Bypass -File ./setup.ps1",
     "task": "powershell -ExecutionPolicy Bypass -File ./install-task.ps1",
-    "plugin:check": "node tools/plugin-check.mjs"
+    "plugin:check": "node tools/plugin-check.mjs",
+    "pack:dist": "npm pack --pack-destination dist"
   },
   "dependencies": {
     "nodemailer": "^7.0.0"

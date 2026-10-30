@@ -1,17 +1,20 @@
 # awesome-dsh-plugin 投稿材料
 
+**状态：已提交（2026-10-30）**
+
+- PR：<https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/10517>
+- 分支：`hxxhxhxx:add-ieee-weekly`（fork 自 `hxxhxhxx/awesome-dsh-plugin`）
+- 改动：仅新增 `data/plugins/hxxhxhxx__ieee-weekly.yml`（6 行）
+- 待办：仓库 topic 里补 `dsh-plugin`
+
 目标仓库：<https://github.com/awesome-dsh-plugin/awesome-dsh-plugin>
 投稿方式：一个 PR，只加一个文件 `data/plugins/hxxhxhxx__ieee-weekly.yml`
 （文件已在 `docs/submission/hxxhxhxx__ieee-weekly.yml`，内容一致）
 
-## 为什么还不能交
+## 提交时间窗口（已完成）
 
-贡献指南里有一条硬性要求：**仓库创建满 1 天**（CI 自动检查，用来过滤"PR 前几分钟才建仓"的提交）。
-
-- 本仓库 `created_at` = **2026-10-29 03:34 UTC**（北京时间 11:34）
-- 也就是说 **2026-10-30 11:34（北京时间）之后** 提交才会过 CI
-
-提前交不会"记过"，只是会被 CI 打回、要重提一次。所以定在明天中午之后。
+贡献指南要求**仓库创建满 1 天**（CI 自动检查）。本仓库 `created_at` = 2026-10-29 03:34 UTC，
+2026-10-30 11:34（北京时间）之后满足条件，实际提交于 11:45。
 
 ## 提交前检查清单
 

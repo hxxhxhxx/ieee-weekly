@@ -5,7 +5,7 @@
 - PR：<https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/10517>
 - 分支：`hxxhxhxx:add-ieee-weekly`（fork 自 `hxxhxhxx/awesome-dsh-plugin`）
 - 改动：仅新增 `data/plugins/hxxhxhxx__ieee-weekly.yml`（6 行）
-- 待办：仓库 topic 里补 `dsh-plugin`
+- 仓库 topic `dsh-plugin` 已加（2026-10-30）\n- 已在 PR 下评论说明 topic 与 CI 结果；重开过一次（误点关闭，已 reopen，CI 重新排队）
 
 目标仓库：<https://github.com/awesome-dsh-plugin/awesome-dsh-plugin>
 投稿方式：一个 PR，只加一个文件 `data/plugins/hxxhxhxx__ieee-weekly.yml`

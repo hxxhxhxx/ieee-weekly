@@ -1,6 +1,6 @@
 {
   "name": "dsh-ieee-weekly",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "IEEE Xplore 期刊 Early Access 关键词周报：Crossref 抓新收录 → LLM 逐篇研判 → Markdown → 邮件；同时是 DSH 插件（注册 ieee_weekly 工具）",
   "type": "module",
   "main": "./index.js",

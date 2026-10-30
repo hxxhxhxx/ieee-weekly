@@ -48,7 +48,9 @@ function linkLine(it) {
 
 function briefItem(it) {
   const a = it.analysis || {};
-  const bits = [`**${it.title}**`, `（${shortJournal(it.journal)}，${statusLabel(it)}，${fmtDate(it.publishedAt)}）`];
+  const meta = [shortJournal(it.journal), statusLabel(it), fmtDate(it.publishedAt)];
+  if (a.process && a.process !== '未说明') meta.push(a.process);
+  const bits = [`**${it.title}**`, `（${meta.join('，')}）`];
   if (a.reason) bits.push(`— ${a.reason}`);
   if (a.summary) bits.push(`<br>　${a.summary.slice(0, 180)}`);
   if (it.doi) bits.push(`[DOI](https://doi.org/${it.doi})`);
@@ -93,6 +95,7 @@ export function buildMarkdown({ items, meta }) {
     L.push(`- **期刊／状态**：${it.journal || '—'} ｜ ${statusLabel(it)}`);
     L.push(`- **上线日期**：${fmtDate(it.publishedAt)}${it.publishedAt ? '（Crossref 收录时间）' : ''}`);
     L.push(`- **作者**：${authorLine(it.authors)}`);
+    if (a.process) L.push(`- **工艺**：${a.process === '未说明' ? '未说明（摘要未给出工艺）' : a.process}`);
     if (a.reason) L.push(`- **结论**：${a.reason}`);
     if (a.summary) L.push(`- **做了什么**：${a.summary}`);
     if (a.method) L.push(`- **方法**：${a.method}`);
@@ -176,6 +179,7 @@ export function buildHtml({ items, meta }) {
       <div style="font-size:15px;font-weight:600;line-height:1.45;color:#111">${esc(it.title)}</div>
       <div style="margin-top:6px;font-size:12px;color:#777">
         ${esc(shortJournal(it.journal))} ｜ ${esc(statusLabel(it))} ｜ ${esc(fmtDate(it.publishedAt))}
+        ${it.analysis?.process ? ` ｜ 工艺 ${esc(it.analysis.process)}` : ''}
         ${it.analysis?.score != null ? ` ｜ 评分 ${it.analysis.score}` : ''}
       </div>
       ${it.analysis?.reason ? `<div style="margin-top:8px;font-size:13px;color:#0b64c8"><b>结论：</b>${esc(it.analysis.reason)}</div>` : ''}
@@ -192,7 +196,7 @@ export function buildHtml({ items, meta }) {
     </div>`;
 
   const bullet = (it) => `<li style="margin:6px 0;font-size:13px;color:#222">
-      <b>${esc(it.title)}</b><br><span style="color:#777;font-size:12px">${esc(shortJournal(it.journal))} · ${esc(statusLabel(it))} · ${esc(fmtDate(it.publishedAt))}</span>
+      <b>${esc(it.title)}</b><br><span style="color:#777;font-size:12px">${esc(shortJournal(it.journal))} · ${esc(statusLabel(it))} · ${esc(fmtDate(it.publishedAt))}${it.analysis?.process && it.analysis.process !== '未说明' ? ` · 工艺 ${esc(it.analysis.process)}` : ''}</span>
       ${it.analysis?.reason ? `<br><span style="color:#444">${esc(it.analysis.reason)}</span>` : ''}
       ${it.doi ? ` <a href="https://doi.org/${esc(it.doi)}" style="color:#0b64c8;text-decoration:none">DOI</a>` : ''}
     </li>`;

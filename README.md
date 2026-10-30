@@ -102,6 +102,7 @@ powershell -ExecutionPolicy Bypass -File .\install-task.ps1 -Day Friday -At 18:3
 ### 1. Linearizing Digital MIMO Arrays Under Load Modulation...
 - 期刊／状态：TMTT ｜ Early Access
 - 上线日期：2026-10-27（Crossref 收录时间）
+- 工艺：0.25 μm GaN HEMT
 - 为什么值得读：……
 - 关键数据：PAE 62% @ 28 GHz；38 dBm
 - 链接：DOI ｜ IEEE Xplore

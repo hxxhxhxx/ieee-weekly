@@ -22,6 +22,38 @@ function countCues(text, cues) {
   return n;
 }
 
+const MATERIALS = [
+  ['GaN', /\bgan\b|gallium nitride|algan/],
+  ['GaAs', /\bgaas\b|gallium arsenide|algap?as/],
+  ['InP', /\binp\b|indium phosphide/],
+  ['Ga2O3', /ga2o3|gallium oxide/],
+  ['SiGe', /\bsige\b|sige bicmos/],
+  ['CMOS', /\bcmos\b|\bsoi\b|finfet/],
+];
+
+const BOARD_CUES = ['board level', 'board-level', 'on pcb', 'pcb', 'discrete', 'off chip', 'off-chip', 'hybrid module', 'module level'];
+
+/**
+ * 从标题/摘要里抠工艺：节点 + 材料，或板级。
+ * 例：0.25 μm GaN / 0.15 μm GaAs pHEMT / 65 nm CMOS / 板级（分立器件）。
+ */
+export function extractProcess(title, abstract) {
+  const text = `${title || ''}. ${abstract || ''}`;
+  const lower = text.toLowerCase();
+
+  const material = MATERIALS.find(([, re]) => re.test(lower))?.[0] || '';
+  const node = text.match(/(\d+(?:\.\d+)?)\s*[-–—]?\s*(μm|um|µm|nm)\b/i);
+  const nodeStr = node ? `${node[1]} ${/nm/i.test(node[2]) ? 'nm' : 'μm'}` : '';
+  const board = BOARD_CUES.some((c) => lower.includes(c));
+
+  if (nodeStr && material) return `${nodeStr} ${material}`;
+  if (nodeStr) return nodeStr;
+  if (board && material) return `板级（${material} 分立器件）`;
+  if (material) return `${material}（节点未说明）`;
+  if (board) return '板级（分立器件 / PCB）';
+  return '未说明';
+}
+
 /** 规则打分：关键词命中 + 新颖性措辞 + 实测证据 + 期刊层级。 */
 export function heuristicScore(item, cfg) {
   const title = normalizeText(item.title);
@@ -78,6 +110,7 @@ export function heuristicScore(item, cfg) {
     process: process.kind,
     hits,
     metrics: extractMetrics(item.title, item.abstract),
+    process: extractProcess(item.title, item.abstract),
     verdict: verdictOf(score, cfg),
     reason: ruleReason(hits, novelty, evidence, item, offTopic, process.kind),
     source: 'rule',
@@ -182,6 +215,7 @@ export async function llmScore(items, cfg, { log = console.log } = {}) {
           score,
           verdict: verdictOf(score, cfg),
           reason: String(r.reason || '').slice(0, 120),
+          process: String(r.process || '').replace(/^工艺[:：]\s*/, '').slice(0, 60) || it.analysis?.process || '',
           summary: String(r.summary || '').slice(0, 400),
           method: String(r.method || '').slice(0, 260),
           results: String(r.results || '').slice(0, 260),
@@ -227,6 +261,7 @@ const SYSTEM_PROMPT = `你是化合物半导体功率放大器方向的资深研
   "id":1,
   "score":8.5,
   "reason":"30 字以内中文，一句话结论：为什么值得/不值得读",
+  "process":"该文用的工艺，必须写具体：节点 + 材料，如 0.25 μm GaN HEMT / 0.15 μm GaAs pHEMT / 65 nm CMOS / 0.13 μm SiGe BiCMOS；板级实现写「板级（分立器件）」；摘要确实没写就写「未说明」，不要猜",
   "summary":"2-3 句中文，说清这篇论文做了什么（问题→方案→验证）",
   "method":"1-2 句：用了什么架构/工艺/算法/测试方式；看不出来就写“摘要未说明”",
   "results":"1-2 句：关键指标与结果；没有具体数字就写“摘要未给出指标”",
